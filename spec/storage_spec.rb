@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 def storage
-  storage = Vines::Storage::Mongomapper.new do
+  Vines::Storage::Mongomapper.new do
     host 'localhost', 27017
     database 'vines_mongo_rails_test'
+    username 'test'
+    password 'test123'
   end
-  def storage.db
-    MOCK_MONGO
-  end
-  storage
 end
 
 def fibered
