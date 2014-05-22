@@ -139,12 +139,12 @@ module Vines
                  Mongo::ReplSetConnection.new(*@hosts, opts)
                end
 
-        # conn.db(@config[:database]).tap do |db|
-        #   user = @config[:username] || ''
-        #   pass = @config[:password] || ''
-        #   db.authenticate(user, pass) unless user.empty? || pass.empty?
-        # end
-        # MongoMapper.connection = conn
+        conn.db(@config[:database]).tap do |db|
+          user = @config[:username] || ''
+          pass = @config[:password] || ''
+          db.authenticate(user, pass) unless user.empty? || pass.empty?
+        end
+        MongoMapper.connection = conn
         MongoMapper.database = @config[:database]
       end
 
